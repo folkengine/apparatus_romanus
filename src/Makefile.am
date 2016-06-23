@@ -4,5 +4,5 @@ lib_LTLIBRARIES = libroman.la
 libroman_la_SOURCES = roman.c roman.h
 
 bin_PROGRAMS = apparatus
-main_SOURCES = main.c
-main_LDADD = libroman.la
+apparatus_SOURCES = main.c
+apparatus_LDADD = libroman.la
