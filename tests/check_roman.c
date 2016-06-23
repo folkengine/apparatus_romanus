@@ -71,13 +71,12 @@ START_TEST(test_brute_force)
     FILE * fp;
     char * line = NULL;
     size_t len = 0;
-    ssize_t read;
 
     fp = fopen("roman_numerals.txt", "r");
     if (fp == NULL)
         exit(EXIT_FAILURE);
 
-    while ((read = getline(&line, &len, fp)) != -1) {
+    while ((getline(&line, &len, fp)) != -1) {
         char *array[10];
         int i=0;
 
@@ -136,7 +135,6 @@ Suite * roman_suite(void)
 {
     Suite *s;
     TCase *tc_core;
-    TCase *tc_limits;
 
     s = suite_create("Roman");
 

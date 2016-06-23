@@ -1,4 +1,3 @@
-#define _GNU_SOURCE
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -6,7 +5,7 @@
 #include <syslog.h>
 #include "roman.h"
 
-#define LOG_ME (0==0)
+#define LOG_ME (0==1)
 
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 // COMMON MACROS
@@ -75,7 +74,7 @@ char * get_roman_value(int arabic)
 int get_arabic_value(char *roman_numerals)
 {
     int sum = 0;
-    int len = strlen(roman_numerals);
+    size_t len = strlen(roman_numerals);
     int last_char = 0;
 
     while(len--) {
