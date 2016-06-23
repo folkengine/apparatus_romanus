@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <check.h>
-#include "roman.c"
+#include "../src/roman.c"
 
 START_TEST(test_add_roman)
 {

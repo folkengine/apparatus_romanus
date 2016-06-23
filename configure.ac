@@ -2,10 +2,10 @@
 
 # Prelude.
 AC_PREREQ([2.59])
-AC_INIT([Money], [0.3], [check-devel AT lists.sourceforge.net])
+AC_INIT([ApparatusRomanus], [0.3], [check-devel AT lists.sourceforge.net])
 AM_PROG_AR
 
-# unique source file --- primitive safety check 
+# unique source file --- primitive safety check
 AC_CONFIG_SRCDIR([src/roman.c])
 
 # fairly severe build strictness
