@@ -32,7 +32,41 @@
 *.dSYM/
 *.su
 
-# Make and CMake
+# Make
+src/Makefile.in
+
+Makefile.in
+aclocal.m4
+ar-lib
+/autom4te.cache/*
+compile
+config.guess
+config.h
+config.h.in
+config.log
+config.status
+config.sub
+configure
+depcomp
+install-sh
+libtool
+ltmain.sh
+missing
+/src/.deps/*
+/src/.libs/*
+/src/apparatus
+stamp-h1
+test-driver
+/tests/.deps/*
+/tests/.libs/*
+/tests/Makefile.in
+/tests/check_roman
+/tests/check_roman.log
+/tests/check_roman.trs
+/tests/test-suite.log
+
+
+# CMake
 cmake_install.cmake
 CMakeCache.txt
 Makefile

@@ -10,7 +10,7 @@ void printInfo()
     printf("Apparatus numero Romanus\n");
     printf("    Christus Pistor (c) MMXVI\n");
     printf("    SPQR\n\n");
-    printf("consuetudinem: roman [-s] <augend> <addend>\n\n");
+    printf("consuetudinem: apparatus [-s] <augend> <addend>\n\n");
     printf("eligendi:\n");
     printf("    -s\tsubtracta\n\n");
 }
