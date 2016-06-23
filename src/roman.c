@@ -55,7 +55,7 @@ char * get_roman_value(int arabic)
 
     int i;
     for (i = 0; i < sieve_size; i++ ) {
-        int sieve_arabic_value = get_arabic_value(sieve[i]);
+        int sieve_arabic_value = get_arabic_value((char*)sieve[i]);
 
         while (sieve_arabic_value <= arabic) {
 

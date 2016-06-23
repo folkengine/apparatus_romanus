@@ -62,6 +62,45 @@ START_TEST(test_get_arabic_value)
 }
 END_TEST
 
+/**
+ * Tests every number from 1 to 4,999, validating conversion from Arabic to Roman numbers, and visa versa.
+ *
+ */
+START_TEST(test_brute_force)
+{
+    FILE * fp;
+    char * line = NULL;
+    size_t len = 0;
+    ssize_t read;
+
+    fp = fopen("roman_numerals.txt", "r");
+    if (fp == NULL)
+        exit(EXIT_FAILURE);
+
+    while ((read = getline(&line, &len, fp)) != -1) {
+        char *array[10];
+        int i=0;
+
+        array[i] = strtok(line,"=");
+
+        while(array[i] != NULL) {
+            array[++i] = strtok(NULL,"=");
+        }
+        int arabic = atoi(array[0]);
+        char *roman = strtok(array[1], "\n");
+
+        ck_assert_str_eq(get_roman_value(arabic), roman);
+        ck_assert_int_eq(get_arabic_value(roman), arabic);
+    }
+
+    ck_assert_int_eq(get_char_arabic_value('m'), 1000);
+
+    fclose(fp);
+    if (line)
+        free(line);
+}
+END_TEST
+
 START_TEST(test_get_char_arabic_value)
 {
     ck_assert_int_eq(get_char_arabic_value('I'), 1);
@@ -108,6 +147,7 @@ Suite * roman_suite(void)
     tcase_add_test(tc_core, test_get_char_arabic_value);
     tcase_add_test(tc_core, test_get_arabic_value);
     tcase_add_test(tc_core, test_get_roman_value);
+    tcase_add_test(tc_core, test_brute_force);
     tcase_add_test(tc_core, test_add_roman);
     tcase_add_test(tc_core, test_subtract_roman);
 

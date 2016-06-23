@@ -8,7 +8,7 @@
 void printInfo()
 {
     printf("Apparatus numero Romanus\n");
-    printf("    Christus Pistor (c) MMXVI\n");
+    printf("    (C) MMXVI - Christus Pistor\n");
     printf("    SPQR\n\n");
     printf("consuetudinem: apparatus [-s] <augend> <addend>\n\n");
     printf("eligendi:\n");
@@ -49,7 +49,7 @@ int main(int argc, char **argv)
     } else {
         // We're doing subtraction so grab the 3rd arg as minuend and subtract the rest.
         strcpy(result, argv[2]);
-        for (3; index < argc; index++) {
+        for (; index < argc; index++) {
             strcpy(result, subtract_roman(result, argv[index]));
         }
     }
