@@ -31,3 +31,14 @@
 # Debug files
 *.dSYM/
 *.su
+
+# Make and CMake
+cmake_install.cmake
+CMakeCache.txt
+Makefile
+/CMakeFiles/*
+/src/CMakeFiles/*
+/tests/CMakeFiles/*
+
+# CLion
+/.idea/*
