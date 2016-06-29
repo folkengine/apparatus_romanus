@@ -11,7 +11,7 @@ Implementation of the Roman Numeral Calculator. Depends on the the [Check unit t
 
 ## Docker Container
 
- A Dockerfile has been included to facilitate running the appplication.
+ A [Dockerfile](https://www.docker.com/) has been included to facilitate running the appplication.
 
      $> cd docker
      $> docker build -t ubuntu-apparatus .
