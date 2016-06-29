@@ -9,7 +9,7 @@ Implementation of the Roman Numeral Calculator. Depends on the the [Check unit t
      $> make
      $> make check
 
- ## Docker Container
+## Docker Container
 
  A Dockerfile has been included to facilitate running the appplication.
 
