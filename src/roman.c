@@ -97,5 +97,5 @@ int get_char_arabic_value(char roman_numeral)
     if ((roman_numeral > 25) || (roman_numeral < 0)) {
         return 0;
     }
-    return ROMAN_VALUES[roman_numeral];
+    return ROMAN_VALUES[(unsigned char) roman_numeral];
 }

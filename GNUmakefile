@@ -1,16 +1,19 @@
-CFLAGS = -g  -v -Wall -Wshadow -Wextra -Werror -funsigned-char -std=c99 -pedantic
-RM = rm -rf
+CFLAGS = -g -Wall -Wshadow -Wextra -Werror -funsigned-char -std=c99 -pedantic
 
-SOURCES = src/main.c src/roman.h src/roman.c
-OBJ = main.o roman.o
+all: clean apparatus 
+
+csrc = $(wildcard src/*.c)
+obj  = $(csrc:.c=.o)
+
+apparatus: $(obj)
+	cc $(CFLAGS) -o $@ $^
+
+test: apparatus
+	cc ./tests/check_roman.c -g -lcheck -lc -o ./tests/check_roman
+	cd  tests && ./check_roman
 
 clean:
-	rm -rf *.o apparatus
+	rm -fr apparatus tests/check_roman tests/check_roman.dSYN
 
-apparatus : main.o
-	cc -o apparatus main.o roman.o
-
-main.o : src/main.c src/roman.h
-	cc -c src/main.c src/roman.c
-
-
+valgrind:
+	valgrind ./apparatus
