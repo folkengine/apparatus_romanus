@@ -35,6 +35,9 @@
 # Make
 src/Makefile.in
 
+# Vim
+*.swp
+
 Makefile.in
 aclocal.m4
 ar-lib
@@ -69,7 +72,6 @@ test-driver
 # CMake
 cmake_install.cmake
 CMakeCache.txt
-Makefile
 /CMakeFiles/*
 /src/CMakeFiles/*
 /tests/CMakeFiles/*
