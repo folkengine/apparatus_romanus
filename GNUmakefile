@@ -13,7 +13,7 @@ test: apparatus
 	cd  tests && ./check_roman
 
 clean:
-	rm -fr apparatus tests/check_roman tests/check_roman.dSYN
+	rm -fr apparatus tests/check_roman apparatus.dSYM src/*.o tests/check_roman.dSYM
 
 valgrind:
 	valgrind ./apparatus
