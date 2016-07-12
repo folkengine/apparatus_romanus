@@ -34,14 +34,33 @@ const char *sieve[] = {"M","CM","D", "CD", "C", "XC", "L", "XL", "X", "IX", "V",
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 // Methods
 
-char * add_roman(char *augend, char *addend)
+int get_char_arabic_value(char roman_numeral)
 {
-    return get_roman_value(get_arabic_value(augend) + get_arabic_value(addend));
+    roman_numeral = toupper(roman_numeral);
+    roman_numeral = roman_numeral - 'A';
+    if ((roman_numeral > 25) || (roman_numeral < 0)) {
+        return 0;
+    }
+    return ROMAN_VALUES[(unsigned char) roman_numeral];
 }
 
-char * subtract_roman(char *minuend, char *subtrahend)
+int get_arabic_value(char *roman_numerals)
 {
-    return get_roman_value(get_arabic_value(minuend) - get_arabic_value(subtrahend));
+    int sum = 0;
+    size_t len = strlen(roman_numerals);
+    int last_char = 0;
+
+    while(len--) {
+        int arabic_value = get_char_arabic_value(roman_numerals[len]);
+
+        if (last_char > arabic_value) {
+            sum -= arabic_value;
+        } else {
+            sum += arabic_value;
+            last_char = arabic_value;
+        }
+    }
+    return sum;
 }
 
 char * get_roman_value(int arabic)
@@ -71,31 +90,13 @@ char * get_roman_value(int arabic)
     return roman_numerals;
 }
 
-int get_arabic_value(char *roman_numerals)
+char * add_roman(char *augend, char *addend)
 {
-    int sum = 0;
-    size_t len = strlen(roman_numerals);
-    int last_char = 0;
-
-    while(len--) {
-        int arabic_value = get_char_arabic_value(roman_numerals[len]);
-
-        if (last_char > arabic_value) {
-            sum -= arabic_value;
-        } else {
-            sum += arabic_value;
-            last_char = arabic_value;
-        }
-    }
-    return sum;
+    return get_roman_value(get_arabic_value(augend) + get_arabic_value(addend));
 }
 
-int get_char_arabic_value(char roman_numeral)
+char * subtract_roman(char *minuend, char *subtrahend)
 {
-    roman_numeral = toupper(roman_numeral);
-    roman_numeral = roman_numeral - 'A';
-    if ((roman_numeral > 25) || (roman_numeral < 0)) {
-        return 0;
-    }
-    return ROMAN_VALUES[(unsigned char) roman_numeral];
+    return get_roman_value(get_arabic_value(minuend) - get_arabic_value(subtrahend));
 }
+
