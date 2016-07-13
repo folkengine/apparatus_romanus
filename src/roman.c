@@ -35,7 +35,7 @@ int get_char_arabic_value(char roman_numeral)
 {
     roman_numeral = toupper(roman_numeral);
     roman_numeral = roman_numeral - 'A';
-    if ((roman_numeral > 25) || (roman_numeral < 0)) {
+    if (roman_numeral > 25) {
         return 0;
     }
     return ROMAN_VALUES[(unsigned char) roman_numeral];
