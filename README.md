@@ -4,10 +4,8 @@ Implementation of the Roman Numeral Calculator. Depends on the the [Check unit t
 
 ## Installation
 
-     $> autoreconf --install
-     $> ./configure
      $> make
-     $> make check
+     $> make test 
 
 ## Docker Container
 
@@ -16,6 +14,7 @@ Implementation of the Roman Numeral Calculator. Depends on the the [Check unit t
      $> cd docker
      $> docker build -t ubuntu-apparatus .
      $> docker run -it ubuntu-apparatus /bin/bash
+		 $> cd /tmp
 
 ## Usage
 
