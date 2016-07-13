@@ -1,4 +1,5 @@
 CFLAGS = -g -D_GNU_SOURCE -Wall -Wshadow -Wextra -Werror -funsigned-char -std=gnu99 -pedantic
+LDFLAGS = -lcheck -lc -lm -lrt -lpthread
 
 all: clean apparatus 
 
@@ -6,10 +7,10 @@ csrc = $(wildcard src/*.c)
 obj  = $(csrc:.c=.o)
 
 apparatus: $(obj)
-	cc $(CFLAGS) -o $@ $^
+	cc $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
 test: apparatus
-	cc ./tests/check_roman.c -g -lcheck -lc -o ./tests/check_roman
+	cc $(CFLAGS) ./tests/check_roman.c -o ./tests/check_roman $(LDFLAGS)
 	cd  tests && ./check_roman
 
 clean:
