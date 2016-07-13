@@ -1,6 +1,11 @@
 CFLAGS = -g -D_GNU_SOURCE -Wall -Wshadow -Wextra -Werror -funsigned-char -std=gnu99 -pedantic
 LDFLAGS = -lcheck -lc -lm -lrt -lpthread
 
+OS := $(shell uname)
+ifeq ($(OS),Darwin)
+	LDFLAGS = -lcheck -lc -lm -lpthread  
+endif
+
 all: clean apparatus 
 
 csrc = $(wildcard src/*.c)
