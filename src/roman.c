@@ -7,7 +7,6 @@
 
 #define LOG_ME (0==1)
 
-//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 // COMMON MACROS
 
 #define ARRAY_OF_STRINGS_SIZE(x) ( sizeof(x) / sizeof((x)[0]) )
@@ -24,14 +23,12 @@
     free(tmp_string_for_extend);              \
 }
 
-//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 // CONSTANTS
 
 const int ROMAN_VALUES[26] = {0, 0, 100, 500, 0, 0, 0, 0, 1, 0, 0, 50, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 10, 0, 0};
 
 const char *sieve[] = {"M","CM","D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
 
-//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 // Methods
 
 int get_char_arabic_value(char roman_numeral)

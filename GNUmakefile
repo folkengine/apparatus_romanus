@@ -1,4 +1,4 @@
-CFLAGS = -g -Wall -Wshadow -Wextra -Werror -funsigned-char -std=c99 -pedantic
+CFLAGS = -g -D_GNU_SOURCE -Wall -Wshadow -Wextra -Werror -funsigned-char -std=gnu99 -pedantic
 
 all: clean apparatus 
 
