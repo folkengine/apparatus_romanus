@@ -25,7 +25,7 @@
 
 // CONSTANTS
 
-const unsigned int ROMAN_VALUES[26] = {0, 0, 100, 500, 0, 0, 0, 0, 1, 0, 0, 50, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 10, 0, 0};
+const int ROMAN_VALUES[26] = {0, 0, 100, 500, 0, 0, 0, 0, 1, 0, 0, 50, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 10, 0, 0};
 
 const char *sieve[] = {"M","CM","D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
 
@@ -35,7 +35,7 @@ static int get_char_arabic_value(char roman_numeral)
 {
     roman_numeral = toupper(roman_numeral);
     roman_numeral = roman_numeral - 'A';
-    const unsigned int UPPER_LETTER_BOUNDARY = 25;
+    const int UPPER_LETTER_BOUNDARY = 25;
     if (roman_numeral > UPPER_LETTER_BOUNDARY) {
         return 0;
     }
@@ -44,12 +44,12 @@ static int get_char_arabic_value(char roman_numeral)
 
 static int get_arabic_value(const char *roman_numerals)
 {
-    int unsigned sum = 0;
+    int sum = 0;
     size_t len = strlen(roman_numerals);
-    int unsigned last_char = 0;
+    int last_char = 0;
 
     while(len--) {
-        int unsigned arabic_value = get_char_arabic_value(roman_numerals[len]);
+        int arabic_value = get_char_arabic_value(roman_numerals[len]);
 
         if (last_char > arabic_value) {
             sum -= arabic_value;
@@ -61,17 +61,17 @@ static int get_arabic_value(const char *roman_numerals)
     return sum;
 }
 
-static char * get_roman_value(int unsigned arabic)
+static char * get_roman_value(int arabic)
 {
     if (arabic < 1)
         return "";
 
     char *roman_numerals = strdup("");
-    int unsigned sieve_size = ARRAY_OF_STRINGS_SIZE(sieve);
+    int sieve_size = ARRAY_OF_STRINGS_SIZE(sieve);
 
-    int unsigned i;
+    int i;
     for (i = 0; i < sieve_size; i++ ) {
-        int unsigned sieve_arabic_value = get_arabic_value((char*)sieve[i]);
+        int sieve_arabic_value = get_arabic_value((char*)sieve[i]);
 
         while (sieve_arabic_value <= arabic) {
 
