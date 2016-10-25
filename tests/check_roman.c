@@ -78,14 +78,14 @@ START_TEST(test_brute_force)
 
     while ((getline(&line, &len, fp)) != -1) {
         char *array[10];
-        int i=0;
+        int unsigned i = 0;
 
         array[i] = strtok(line,"=");
 
         while(array[i] != NULL) {
             array[++i] = strtok(NULL,"=");
         }
-        int arabic = atoi(array[0]);
+        int unsigned arabic = atoi(array[0]);
         char *roman = strtok(array[1], "\n");
 
         ck_assert_str_eq(get_roman_value(arabic), roman);
@@ -125,7 +125,7 @@ START_TEST(test_sasprintf)
     Sasprintf(q, "select * from tab");
     ck_assert_str_eq(q, "select * from tab");
 
-    int i = 2;
+    int unsigned i = 2;
     Sasprintf(q, "%s where row%i is not null", q, i);
     ck_assert_str_eq(q, "select * from tab where row2 is not null");
 }
@@ -156,7 +156,7 @@ Suite * roman_suite(void)
 
 int main(void)
 {
-    int number_failed;
+    int unsigned number_failed;
     Suite *s;
     SRunner *sr;
 
