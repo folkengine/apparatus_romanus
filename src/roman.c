@@ -41,7 +41,7 @@ static int get_char_arabic_value(char roman_numeral)
     return ROMAN_VALUES[(unsigned char) roman_numeral];
 }
 
-static int get_arabic_value(char *roman_numerals)
+static int get_arabic_value(const char *roman_numerals)
 {
     int sum = 0;
     size_t len = strlen(roman_numerals);
@@ -87,13 +87,12 @@ static char * get_roman_value(int arabic)
     return roman_numerals;
 }
 
-char * add_roman(char *augend, char *addend)
+char * add_roman(const char *augend, const char *addend)
 {
     return get_roman_value(get_arabic_value(augend) + get_arabic_value(addend));
 }
 
-char * subtract_roman(char *minuend, char *subtrahend)
+char * subtract_roman(const char *minuend, const char *subtrahend)
 {
     return get_roman_value(get_arabic_value(minuend) - get_arabic_value(subtrahend));
 }
-
