@@ -78,14 +78,14 @@ START_TEST(test_brute_force)
 
     while ((getline(&line, &len, fp)) != -1) {
         char *array[10];
-        int i=0;
+        int unsigned i = 0;
 
         array[i] = strtok(line,"=");
 
         while(array[i] != NULL) {
             array[++i] = strtok(NULL,"=");
         }
-        int arabic = atoi(array[0]);
+        int unsigned arabic = atoi(array[0]);
         char *roman = strtok(array[1], "\n");
 
         ck_assert_str_eq(get_roman_value(arabic), roman);
@@ -119,18 +119,6 @@ START_TEST(test_get_char_arabic_value)
 }
 END_TEST
 
-START_TEST(test_sasprintf)
-{
-    char *q = NULL;
-    Sasprintf(q, "select * from tab");
-    ck_assert_str_eq(q, "select * from tab");
-
-    int i = 2;
-    Sasprintf(q, "%s where row%i is not null", q, i);
-    ck_assert_str_eq(q, "select * from tab where row2 is not null");
-}
-END_TEST
-
 Suite * roman_suite(void)
 {
     Suite *s;
@@ -141,7 +129,6 @@ Suite * roman_suite(void)
     /* Core test case */
     tc_core = tcase_create("Core");
 
-    tcase_add_test(tc_core, test_sasprintf);
     tcase_add_test(tc_core, test_get_char_arabic_value);
     tcase_add_test(tc_core, test_get_arabic_value);
     tcase_add_test(tc_core, test_get_roman_value);
@@ -156,7 +143,7 @@ Suite * roman_suite(void)
 
 int main(void)
 {
-    int number_failed;
+    int unsigned number_failed;
     Suite *s;
     SRunner *sr;
 
