@@ -54,7 +54,7 @@ static char * get_roman_value(int arabic)
     if (arabic < 1)
         return "";
 
-    char *roman_numerals = malloc(1000);
+    char *roman_numerals = strdup("");
     int sieve_size = ARRAY_OF_STRINGS_SIZE(sieve);
 
     int i;
