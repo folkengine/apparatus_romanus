@@ -11,18 +11,6 @@
 
 #define ARRAY_OF_STRINGS_SIZE(x) ( sizeof(x) / sizeof((x)[0]) )
 
-/**
- * Safe asprintf macro
- *
- * http://modelingwithdata.org/arch/00000062.htm
- * https://github.com/b-k/21st-Century-Examples/blob/master/sasprintf.c
- */
-#define Sasprintf(write_to,  ...) {           \
-    char *tmp_string_for_extend = (write_to); \
-    asprintf(&(write_to), __VA_ARGS__);       \
-    free(tmp_string_for_extend);              \
-}
-
 // CONSTANTS
 
 const int ROMAN_VALUES[26] = {0, 0, 100, 500, 0, 0, 0, 0, 1, 0, 0, 50, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 10, 0, 0};
@@ -35,7 +23,7 @@ static int get_char_arabic_value(char roman_numeral)
 {
     roman_numeral = toupper(roman_numeral);
     roman_numeral = roman_numeral - 'A';
-    const int UPPER_LETTER_BOUNDARY = 25;
+    const int UPPER_LETTER_BOUNDARY = 'Z' - 'A';
     if (roman_numeral > UPPER_LETTER_BOUNDARY) {
         return 0;
     }
@@ -66,7 +54,7 @@ static char * get_roman_value(int arabic)
     if (arabic < 1)
         return "";
 
-    char *roman_numerals = strdup("");
+    char *roman_numerals = malloc(1000);
     int sieve_size = ARRAY_OF_STRINGS_SIZE(sieve);
 
     int i;
@@ -81,10 +69,12 @@ static char * get_roman_value(int arabic)
                 closelog();
             }
 
-            Sasprintf(roman_numerals, "%s%s", roman_numerals, sieve[i]);
+            strcat(roman_numerals, sieve[i]);
+
             arabic = arabic - sieve_arabic_value;
         }
     }
+
     return roman_numerals;
 }
 

@@ -119,18 +119,6 @@ START_TEST(test_get_char_arabic_value)
 }
 END_TEST
 
-START_TEST(test_sasprintf)
-{
-    char *q = NULL;
-    Sasprintf(q, "select * from tab");
-    ck_assert_str_eq(q, "select * from tab");
-
-    int unsigned i = 2;
-    Sasprintf(q, "%s where row%i is not null", q, i);
-    ck_assert_str_eq(q, "select * from tab where row2 is not null");
-}
-END_TEST
-
 Suite * roman_suite(void)
 {
     Suite *s;
@@ -141,7 +129,6 @@ Suite * roman_suite(void)
     /* Core test case */
     tc_core = tcase_create("Core");
 
-    tcase_add_test(tc_core, test_sasprintf);
     tcase_add_test(tc_core, test_get_char_arabic_value);
     tcase_add_test(tc_core, test_get_arabic_value);
     tcase_add_test(tc_core, test_get_roman_value);
