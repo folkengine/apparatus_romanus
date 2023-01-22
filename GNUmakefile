@@ -3,7 +3,7 @@ LDFLAGS = -lcheck -lc -lm -lrt -lpthread
 
 OS := $(shell uname)
 ifeq ($(OS),Darwin)
-	LDFLAGS = -lcheck -lc -lm -lpthread  
+	LDFLAGS = -lcheck -lc -lm -lpthread -L/opt/homebrew/lib
 endif
 
 all: clean apparatus 
